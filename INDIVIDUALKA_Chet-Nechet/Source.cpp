@@ -2,12 +2,13 @@
 #include <iomanip>
 #include <iostream>
 #include<cstdlib>
+#include <locale.h>
 using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int n;
-	do { cout << "Âåäèòå N- ðàçìåðòîñòü ïîëÿ. Îáðàòèòå âíèìàíèå 2<=N<=10"; cin >> n; } while (n < 2 || n>10);
+	do { cout << "Ã‚Ã¥Ã¤Ã¨Ã²Ã¥ N- Ã°Ã Ã§Ã¬Ã¥Ã°Ã²Ã®Ã±Ã²Ã¼ Ã¯Ã®Ã«Ã¿. ÃŽÃ¡Ã°Ã Ã²Ã¨Ã²Ã¥ Ã¢Ã­Ã¨Ã¬Ã Ã­Ã¨Ã¥ 2<=N<=10"; cin >> n; } while (n < 2 || n>10);
 	system("color C");
 	play(n);
 	int a;
