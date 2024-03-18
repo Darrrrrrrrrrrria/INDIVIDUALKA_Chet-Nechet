@@ -7,7 +7,7 @@ using namespace std;
 char board[100] = { '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-','-', '-', '-', '-', '-', '-', '-', '-', '-' };//ìàññèâ ïîëÿ ýòî áóêâû!!!!!!!!!!!!!!
 void print_board(int n, int turn)
 {
-	cout << "Èãðîâîå ïîëå\n";
+	cout << "Игровое поле\n";
 	int stroka, stolbec;
 	for (stolbec = 0; stolbec < n; stolbec++) {
 		for (stroka = 0; stroka < n; stroka++) {
@@ -16,8 +16,8 @@ void print_board(int n, int turn)
 		cout << "\n";
 	}
 	if (turn < n) {
-		if (turn % 2 == 0) { cout << "Õîä ÷åòíîãî èãðîêà:\n"; }
-		else { cout << "Õîä íå÷åòíîãî èãðîêà:\n"; }
+		if (turn % 2 == 0) { cout << "Ход четного игрока:\n"; }
+		else { cout << "Ход нечетного игрока:\n"; }
 	}
 }
 void podschet(int n, int turn) {
@@ -52,20 +52,19 @@ void podschet(int n, int turn) {
 	else { nechet += 1; }
 	if (pobdiag % 2 == 0) { chet += 1; }
 	else { nechet += 1; }
-	cout << "Êîëè÷åñòâî íå÷åòíûõ ñóìì ðàâíî  " << nechet << "\n";
-	cout << "Êîëè÷åñòâî ÷åòíûõ ñóìì ðàâíî  " << chet << "\n";
-	if (chet > nechet) { cout << "Âûèãðàë ÷åòíûé èãðîê "; }
-	if (chet == nechet) { cout << "Íè÷üÿ"; }
-	if (nechet > chet) { cout << "Âûèãðàë íå÷åíòûé èãðîê"; }
+	cout << "Количество нечетных сумм равно  " << nechet << "\n";
+	cout << "Количество четных сумм равно  " << chet << "\n";
+	if (chet > nechet) { cout << "Выиграл четный игрок "; }
+	if (chet == nechet) { cout << "Ничья"; }
+	if (nechet > chet) { cout << "Выиграл нечентый игрок"; }
 }
 
 int get_move(int n, int turn)
 {
 	system("cls");
 	setlocale(0, "ru");
-	//ïîäñêàçêà
 	int stroka, stolbec;
-	cout << "Óïðàâëåíèå\n";
+	cout << "Управление\n";
 	for (stolbec = 0; stolbec < n; stolbec++) {
 		for (stroka = 1; stroka <= n; stroka++) {
 			cout << "|-" << setw(2) << stroka + n * stolbec << setw(2) << "-|";
@@ -76,9 +75,9 @@ int get_move(int n, int turn)
 	print_board(n, turn);
 	int move;
 	cin >> move;
-	while (move > n * n || move < 1 || board[move - 1] != '-') //ïðîâåðêà ââåä¸ííîãî ÷èñëà
+	while (move > n * n || move < 1 || board[move - 1] != '-') 
 	{
-		cout << "Âåäèòå ïðàâèëüíîå ÷èñëî (1-" << n * n << "), ñëåäèòå, ÷òîáû ïîëå áûëî ñâîáîäíûì. \n";
+		cout << "Ведите правильное число (1-" << n * n << "), ), следите, чтобы поле было свободным.  \n";
 		cin >> move;
 	}
 	return move;
